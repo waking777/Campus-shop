@@ -8,4 +8,9 @@
     <select id="findAll" resultType="com.itheima.domain.User">
         select * from user
     </select>
+
+    <!-- 保存用户-->
+    <insert id="saveUser" parameterType="com.itheima.domain.User">
+        insert into user(username,address,sex,birthday)values(#{username},#{address},#{sex},#{birthday});
+    </insert>
 </mapper>

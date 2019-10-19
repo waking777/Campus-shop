@@ -115,6 +115,7 @@ public class MybatisTest {
         List<User> users = userDao.findByVo(vo);
         for (User u : users) {
             System.out.println(u);
+            System.out.println("1");
         }
     }
 }

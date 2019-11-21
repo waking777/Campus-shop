@@ -8,6 +8,12 @@
          可以在标签内部配置数据库的信息。也可以通过属性引用外部配置文件信息
          resource属性：常用的
             用于指定配置文件的位置，是按照类路径的写法来写，并且必须存在于类路径下。
+         url属性：
+            是要求按照Url的写法来写地址
+            URL：Unifrom Resource Locator 统一资源定位符。它是可以唯一标识一个资源的位置。
+            它的写法：
+                http://localhost:8080/practice_mybatis/demo1
+                协议    主机     端口    URI(Unifrom Resource Identifier 统一资源标识符，他可以在应用中唯一定位资源)
     -->
     <properties resource="jdbcConfig.properties">
         <!--

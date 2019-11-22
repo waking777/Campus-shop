@@ -34,7 +34,7 @@ public class MybatisTest {
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
         SqlSessionFactory factory = builder.build(in);
         //3.使用工厂生产SqlSession对象
-        sqlsession = factory.openSession();
+        sqlsession = factory.openSession(true);
         //4.使用SqlSession创建Dao接口的代理对象
         userDao = sqlsession.getMapper(IUserDao.class);
     }
@@ -42,7 +42,7 @@ public class MybatisTest {
     @After
     public void destory() throws Exception {
         //提交事务
-        sqlsession.commit();
+        //sqlsession.commit();
         //6.释放资源
         sqlsession.close();
         in.close();
@@ -59,14 +59,12 @@ public class MybatisTest {
     @Test
     public void testSave() {
         User user = new User();
-        user.setUsername("mybatis last insert  username");
+        user.setUsername("auto-otto");
         user.setAddress("上海市闵行区");
         user.setSex("男");
         user.setBirthday(new Date());
-        System.out.println("1111111111"+user);
         //5.执行保存方法
         userDao.saveUser(user);
-        System.out.println("2222"+user);
     }
 
     @Test

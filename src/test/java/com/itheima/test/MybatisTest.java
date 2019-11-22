@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -116,4 +117,34 @@ public class MybatisTest {
             System.out.println("1");
         }
     }
+
+    @Test
+    public void testFindUserByCondition() {
+        User u = new User();
+        u.setUsername("周冬雨");
+        u.setSex("男");
+        List<User> users = userDao.findUserByCondition(u);
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testFindInIds() {
+        QueryVo queryVo = new QueryVo();
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(41);
+        list.add(42);
+        list.add(43);
+        queryVo.setIds(list);
+
+        List<User> users = userDao.findUserInIds(queryVo);
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
 }

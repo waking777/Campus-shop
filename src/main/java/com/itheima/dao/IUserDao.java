@@ -50,4 +50,14 @@ public interface IUserDao {
      * 根据vo来模糊查询
      */
     List<User> findByVo(QueryVo vo);
+
+    /**
+     * 根据条件来查询，
+     */
+    List<User> findUserByCondition(User user);
+
+    /**
+     * 根据ids来查询数据
+     */
+    List<User> findUserInIds(QueryVo vo);
 }

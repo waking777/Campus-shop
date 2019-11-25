@@ -4,6 +4,7 @@ import com.itheima.dao.IAccountDao;
 import com.itheima.dao.IUserDao;
 import com.itheima.domain.Account;
 import com.itheima.domain.AccountUser;
+import com.itheima.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,11 +16,11 @@ import org.junit.Test;
 import java.io.InputStream;
 import java.util.List;
 
-public class AccountTest {
+public class UserTest {
 
     private InputStream in;
     private SqlSession sqlsession;
-    private IAccountDao accountDao;
+    private IUserDao userDao;
 
     @Before
     public void init() throws Exception {
@@ -31,7 +32,7 @@ public class AccountTest {
         //3.使用工厂生产SqlSession对象
         sqlsession = factory.openSession(true);
         //4.使用SqlSession创建Dao接口的代理对象
-        accountDao = sqlsession.getMapper(IAccountDao.class);
+        userDao = sqlsession.getMapper(IUserDao.class);
     }
 
     @After
@@ -48,23 +49,14 @@ public class AccountTest {
      */
     @Test
     public void testFindAll() {
-        List<Account> accounts = accountDao.findAll();
-        for (Account account : accounts) {
+        List<User> users = userDao.findAll();
+        for (User user : users) {
             System.out.println("-----------");
-            System.out.println(account);
-            System.out.println(account.getUser());
+            System.out.println(user);
+            System.out.println(user.getAccounts());
         }
     }
 
 
-    /**
-     * 测试查询所有账户同时包涵用户名称和地址
-     */
-    @Test
-    public void testFindAllAccountUser() {
-        List<AccountUser> aus = accountDao.findAllAccount();
-        for (AccountUser au : aus) {
-            System.out.println(au);
-        }
-    }
+
 }

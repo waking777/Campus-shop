@@ -11,7 +11,7 @@ import java.util.List;
 public interface IUserDao {
 
     /**
-     * 查询所有的操作
+     * 查询所有的用户，同时获取他的所有账号信息
      * @return
      */
     List<User> findAll();

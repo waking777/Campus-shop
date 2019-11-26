@@ -21,7 +21,7 @@
     <!-- 查询所有-->
     <select id="findAll" resultMap="roleMap">
         select u.*,r.id as rid,r.role_name,r.role_desc from role r
-        left outer join user_role ur  on r.id = ur.rid
+        left outer join user_role ur  on r.id =  ur.rid
         left outer join user u on u.id = ur.uid
     </select>
 </mapper>

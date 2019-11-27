@@ -2,6 +2,8 @@ package com.itheima.dao;
 
 import com.itheima.domain.QueryVo;
 import com.itheima.domain.User;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -17,10 +19,21 @@ public interface IUserDao {
     List<User> findAll();
 
     /**
+     * 查询所有用户2--注解开发
+     */
+    @Select("select * from user")
+    List<User> findAll2();
+
+    /**
      * 保存用户
      */
     void saveUser(User user);
 
+    /**
+     * 保存用户--注解开发
+     */
+    @Insert("insert into user(username,address,sex,birthday) values (#{username},#{address},#{sex},#{birthday})")
+    void saveUser2(User user);
     /**
      * 更新用户
      */
